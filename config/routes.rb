@@ -1,17 +1,18 @@
 Rails.application.routes.draw do
-  get 'index/brands'
-  get 'index/shoes'
-  get 'index/results'
+
+  # get 'shoes/index'
+
+  # get 'brands/index'
+
+  # #root "welcome#index"
+  # # devise_for :users
 
 
+  resources :brands, only: [:index] do
+    resources :shoes, only: [:index] do
+      # resources :results, only: [:index]
+    end
+  end
 
-  #root "welcome#index"
-  # devise_for :users
-
-
-  # resources :brand, only: [:index] do
-  #   resources :shoe, only: [:index] do
-  #     resources :results, only: [:index]
-  #   end
-  # end
+  # root to: 'brands#index'
 end

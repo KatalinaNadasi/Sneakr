@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20150427143321) do
     t.string   "name"
     t.string   "brand_id"
     t.text     "description"
+    t.integer  "size"
     t.string   "photo_url"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false

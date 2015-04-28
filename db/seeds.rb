@@ -3,5 +3,12 @@
 #
 # Examples:
 #
+Brand = Brand.create(name: "Adidas")
+Shoe = Shoe.create(name:"gazelle", brand: brand, description: "clacladsdsdsdsdsdsd")
+
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+# modele de chaussures
+# size (36..46)
