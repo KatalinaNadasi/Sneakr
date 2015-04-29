@@ -5,8 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
 brand = Brand.create(name: 'nike')
+
 Shoe = Shoe.create(name: 'Nike Air Max 1', brand: brand, description: "La Nike Air Max est un modèle
 de basket créée pour Nike en 1987 par Tinker Hatfield, designer chez Nike. La Air Max relança d'ailleurs
 l'entreprise qui était sur le point de faire faillite. La légende veut que Tinker Hatfield se soit inspiré
