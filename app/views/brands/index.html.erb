@@ -3,7 +3,8 @@
 
 <ul>
   <%@brands.each do |brand|%>
-    <li> <%= brand.name %>
+    <li> <%= link_to brand.name, brand_shoes_path(brand) %> <!--
+      rajouter suite éléments (description etc.) -->
     </li>
   <% end %>
 </ul>

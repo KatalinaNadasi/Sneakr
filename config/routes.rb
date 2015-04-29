@@ -14,5 +14,5 @@ Rails.application.routes.draw do
     end
   end
 
-  # root to: 'brands#index'
+  root to: 'brands#index'
 end
