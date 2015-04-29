@@ -10,13 +10,14 @@
   <%@shoes.each do |shoe|%>
     <div class="row">
       <div class="col-xs-2">
-        <%= image_tag "http://placehold.it/200x200", class: "img-circle img-responsive" %>
+        <%= image_tag shoe.picture(:original), class: "img-responsive" %>
       </div>
       <div class="col-xs-10">
         <h2><%= shoe.name %></h2>
         <p>
           <%= shoe.description %>
         </p>
+        <%= image_tag shoe.picture(:thumb), class: "img-responsive" %>
       </div>
     </div>
   <% end %>
