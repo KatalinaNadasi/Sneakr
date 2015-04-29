@@ -1,9 +1,23 @@
-<h1>Shoes#index</h1>
-<p>Find me in app/views/shoes/index.html.erb</p>
+<div class="text-center">
+  <h1>Les sneakers de la marque <%= @brand.name %></h1>
+  <%= link_to brands_path do %>
+    <i class="fa fa-arrow-left"></i> Back
+  <% end %>
+</div>
 
-<%@shoes.each do |shoe|%>
-   <li>
-    <%= shoe.name %>, <%= shoe.description %>
-   </li>
- <% end %>
 
+<div class="container">
+  <%@shoes.each do |shoe|%>
+    <div class="row">
+      <div class="col-xs-2">
+        <%= image_tag "http://placehold.it/200x200", class: "img-circle img-responsive" %>
+      </div>
+      <div class="col-xs-10">
+        <h2><%= shoe.name %></h2>
+        <p>
+          <%= shoe.description %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>

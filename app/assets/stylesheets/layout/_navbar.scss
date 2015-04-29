@@ -15,7 +15,7 @@ $navbar-bg: white;
  * Box model
  * ------------------------------------- */
 $navbar-height: 50px;
-$navbar-vertical-padding: 10px;
+$navbar-vertical-padding: 20px;
 $navbar-horizontal-padding: 20px;
 $navbar-border-bottom-width: 1px;
 $navbar-border-bottom-color: $gray-lighter;
@@ -23,7 +23,7 @@ $navbar-border-bottom-color: $gray-lighter;
 /* -------------------------------------
  * Navbar button
  * ------------------------------------- */
-$navbar-btn-height: 40px;
+$navbar-btn-height: 50px;
 $navbar-btn-bg: lightgrey;
 $navbar-btn-color: white;
 $navbar-btn-horizontal-padding: 10px;
@@ -85,6 +85,7 @@ $navbar-profile-border-width: 2px;
     color: $navbar-btn-color;
     border-radius: $navbar-btn-radius;
     margin-top: ($navbar-height + 2 * $navbar-vertical-padding - $navbar-btn-height) / 2;
+    margin-bottom: ($navbar-height + 2 * $navbar-vertical-padding - $navbar-btn-height) / 2;
     font-weight: bold;
     background-color: $navbar-btn-bg;
     font-size: 12px;

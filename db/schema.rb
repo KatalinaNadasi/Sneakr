@@ -25,13 +25,13 @@ ActiveRecord::Schema.define(version: 20150427143321) do
 
   create_table "shoes", force: :cascade do |t|
     t.string   "name"
-    t.string   "brand_id"
+    t.integer  "brand_id"
     t.text     "description"
-    t.integer  "size"
-    t.string   "photo_url"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  add_index "shoes", ["brand_id"], name: "index_shoes_on_brand_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

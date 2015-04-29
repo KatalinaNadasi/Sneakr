@@ -1,11 +1,16 @@
-<h1>All Brands</h1>
-<p>Find me in app/views/index/brands.html.erb</p>
+<h1 class="text-center">All Brands</h1>
 
-<ul>
+
+<div class="container">
   <%@brands.each do |brand|%>
-    <li> <%= link_to brand.name, brand_shoes_path(brand) %> <!--
-      rajouter suite éléments (description etc.) -->
-    </li>
+    <div class="row">
+      <div class="col-xs-4">
+        <%= image_tag brand.photo_url, class: "img-rounded img-responsive" %>
+      </div>
+      <div class="col-xs-8">
+        <h2><%= brand.name %></h2>
+        <%= link_to "toutes les sneakers de #{brand.name}", brand_shoes_path(brand) %>
+      </div>
+    </div>
   <% end %>
-</ul>
-
+</div>

@@ -1,0 +1,24 @@
+- name: adidas
+  photo_url: nike.jpg
+  shoes:
+    - name: Adidas Stan Smith
+      description: |
+        Commercialisée en 1964 sous le nom d'Adidas Robert Haillet du nom du joueur de tennis
+        français qui l'a conçue. La paire est typique : blanche, cuir aéré par trois rangés
+        de trous, couleure verte à l'arrière avec le logo de la marque. Explosion des ventes suite au buzz d'Adidas et le lancement de l'arrêt de la production en 2011 puis de l'annonce du retour de sa production sur le réseaux sociaux pour 2014. Annonce en janvier 2014 du nouveau modèle qui s'est arraché. Léger essoufflement à prévoir. Exaspération de taggeurs-fou qui s'amusent à colorer les Stans Smith des piétons.")
+    - name: Adidas Superstar
+      description: |
+        Imaginée en 1969 par Adi Dassler, le fondateur de la marque.
+        A l'origine concue pour jouer au basket elle est devenue l’emblème d’un style
+        de vie street et hip hop grace à des légendes du rap comme Run-DMC.
+        Probablement la chaussure qui exerce une influence durable sur la culture d’aujourd’hui.
+        Retour progressif depuis début décembre dernier avec le retour d’une Superstar ‘Made in France’ et campagne vidéo officielle de la campagne ‘Superstar’ avec Pharrell Williams, David Beckham, Rita Ora et Damian Lillard.")
+- name: Nike
+  photo_url: nike.jpg
+  shoes:
+    - name: Nike Air Max 1
+      description: |
+        La Nike Air Max est un modèle
+        de basket créée pour Nike en 1987 par Tinker Hatfield, designer chez Nike. La Air Max relança d'ailleurs
+        l'entreprise qui était sur le point de faire faillite. La légende veut que Tinker Hatfield se soit inspiré
+        de l'architecture du centre Beaubourg de Paris pour la conception de la Nike Air Max.
