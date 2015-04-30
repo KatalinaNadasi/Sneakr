@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
+  ActiveAdmin.routes(self)
   #root "welcome#index"
-  #devise_for :users
+  devise_for :users
 
   resources :brands, only: [:index] do
     resources :shoes, only: [:index]
