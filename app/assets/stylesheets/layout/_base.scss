@@ -5,6 +5,23 @@
  * already a Bootstrap SCSS variable that does the same job
  * ------------------------------------- */
 
+@import url(http://fonts.googleapis.com/css?family=Exo:400,900);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800);
+
  body {
-  padding-top: 100px
+  padding-top: 30px
+ }
+
+ h1 {
+  font-family: 'Exo', sans-serif;
+  font-size: 42px;
+  text-align: center;
+  font-weight: 300;
+ }
+
+ button {
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+
  }
