@@ -1,4 +1,9 @@
-<h1 class="text-center">All Brands</h1>
+<div class="container">
+  <div id="main-logo">
+    <%= image_tag "logo.png", class: "img-center"  %>
+  <h1>Sneakr</h1>
+  </div>
+</div>
 
 <div class="container">
   <%@brands.each do |brand|%>
@@ -9,8 +14,48 @@
       <div class="col-xs-8">
       <h2><%= brand.name %></h2>
       <%= link_to "toutes les sneakers de #{brand.name}", brand_shoes_path(brand) %>
-      </div>
-    </div>
-  <% end %>
+
+<div class="subtitle">
+  <p> Trouvez toutes les sneakers motherfuck </p>
+</div>
+  <div class="social">
+    <ul class="list-inline">
+      <li><a href="#"><i class="fa fa-lg fa-facebook"></i></a>
+      </li>
+      <li><a href="#"><i class="fa fa-lg fa-twitter"></i></a>
+      </li>
+      <li><a href="#"><i class="fa fa-lg fa-instagram"></i></a>
+      </li>
+    </ul>
+  </div>
 </div>
 
+<div id="brands">
+  <div class="row">
+    <div class="col-xs-3">
+      <div class="brand-card">
+        <%= image_tag "adidas.png", class: "img-rounded img-responsive" %>
+        <a class='btn btn-primary' href='#'>Découvrez</a>
+      </div>
+    </div>
+    <div class="col-xs-3">
+      <div class="brand-card">
+          <%= image_tag "nike.jpg", class: "img-rounded img-responsive" %>
+          <a class='btn btn-primary' href='#'>Découvrez</a>
+       </div>
+    </div>
+      <div class="col-xs-3">
+        <div class="brand-card">
+        <%= image_tag "jordan.jpg", class: "img-rounded img-responsive" %>
+        <a class='btn btn-primary' href='#'>Découvrez</a>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div class="brand-card">
+        <%= image_tag "reebok.jpg", class: "img-rounded img-responsive" %>
+        <a class='btn btn-primary' href='#'>Découvrez</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
