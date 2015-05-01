@@ -1,13 +1,15 @@
 <div class="text-center">
-  <h1>Les sneakers de la marque <%= @brand.name %></h1>
+  <%= image_tag @brand.photo_url, class: "image_center brand_image" %>
+  <h1>c'est tendance<h1>
   <%= link_to brands_path do %>
     <i class="fa fa-arrow-left"></i> Back
   <% end %>
+
 </div>
 
 
 <div class="container">
-  <%@shoes.each do |shoe|%>
+  <% @shoes.each do |shoe| %>
     <div class="row">
       <div class="col-xs-2">
         <%= image_tag shoe.picture(:original), class: "img-responsive" %>
@@ -22,3 +24,4 @@
     </div>
   <% end %>
 </div>
+

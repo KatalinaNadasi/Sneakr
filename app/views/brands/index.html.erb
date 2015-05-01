@@ -1,6 +1,5 @@
 <h1 class="text-center">All Brands</h1>
 
-
 <div class="container">
   <%@brands.each do |brand|%>
     <div class="row">
@@ -8,9 +7,10 @@
         <%= image_tag brand.photo_url, class: "img-rounded img-responsive" %>
       </div>
       <div class="col-xs-8">
-        <h2><%= brand.name %></h2>
-        <%= link_to "toutes les sneakers de #{brand.name}", brand_shoes_path(brand) %>
+      <h2><%= brand.name %></h2>
+      <%= link_to "toutes les sneakers de #{brand.name}", brand_shoes_path(brand) %>
       </div>
     </div>
   <% end %>
 </div>
+
