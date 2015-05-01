@@ -35,7 +35,7 @@
     width: 40px;
     height: 40px;
     color: #FFF;
-    background-color: #909AA0;
+    background-color: #55BEB0;
     font-size: 22px;
     text-align:center;
     padding-top: 12px;
@@ -91,7 +91,7 @@
 }
 
 .brand-card {
-  background-color: $yellow;
+  background-color: $pink;
   border: 2px solid #EDEFED;
   height: 400px;
   text-align: center;
@@ -99,7 +99,7 @@
   padding-bottom: 150px;
   transition: background-color 0.3s ease;
   &:hover {
-    background-color: $green;
+    background-color: $bluenike;
   }
   a {
     position: absolute;
@@ -118,6 +118,56 @@
 
 }
 
-#btn-primary {
-  position:bottom;
+#wrapper {
+  width: 90%;
+  max-width: 1100px;
+  min-width: 800px;
+  margin: 50px auto;
+}
+
+#columns {
+  -webkit-column-count: 3n;
+  -webkit-column-gap: 10px;
+  -webkit-column-fill: auto;
+  -moz-column-count: 3;
+  -moz-column-gap: 50px;
+  -moz-column-fill: auto;
+  column-count: 3;
+  column-gap: 30px;
+  column-fill: auto;
+}
+
+.pin {
+  display: inline-block;
+  background: #E9E9E9;
+  border: 2px solid #FAFAFA;
+  box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+  margin: 0 2px 15px;
+  -webkit-column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+  column-break-inside: avoid;
+  padding: 15px;
+  padding-bottom: 5px;
+  opacity: 1;
+
+  -webkit-transition: all .2s ease;
+  -moz-transition: all .2s ease;
+  -o-transition: all .2s ease;
+  transition: all .2s ease;
+  &:hover {
+    background-color: $pink;
+  }
+}
+
+.pin img {
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 15px;
+  margin-bottom: 5px;
+}
+
+.pin p {
+  font: 12px/18px Arial, sans-serif;
+  color: #333;
+  margin: 0;
 }

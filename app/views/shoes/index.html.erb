@@ -1,25 +1,35 @@
+<div class="container">
+  <div id="main-logo">
+    <%= image_tag "logo.png", class: "img-center"  %>
+  <h1>Sneakr</h1>
+  </div>
+</div>
+
+
 <div class="text-center">
-  <%= image_tag @brand.photo_url, class: "image_center brand_image" %>
-  <h1>c'est tendance<h1>
+  <h3><%= @brand.name %></h3>
   <%= link_to brands_path do %>
     <i class="fa fa-arrow-left"></i> Back
   <% end %>
-
 </div>
 
 
 <div class="container">
-  <% @shoes.each do |shoe| %>
-    <div class="row">
-      <div class="col-xs-2">
-        <%= image_tag shoe.picture(:original), class: "img-responsive" %>
+  <div id="wrapper">
+    <% @shoes.each do |shoes_column|%>
+      <div class="col-xs-4">
+        <% shoes_column.each do |shoe| %>
+          <div class='p20'>
+            <div class="pin">
+              <%= image_tag shoe.picture(:original), class: "img-responsive" %>
+              <h2><%= shoe.name %></h2>
+              <p>
+                <%= shoe.description %>
+              </p>
+            </div>
+          </div>
+        <% end %>
       </div>
-      <div class="col-xs-10">
-        <h2><%= shoe.name %></h2>
-        <p>
-          <%= shoe.description %>
-        </p>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
