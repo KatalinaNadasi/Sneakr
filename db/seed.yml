@@ -1,5 +1,5 @@
 - name: Adidas
-  photo_url: adidas.jpg
+  photo_url: adidas.png
   shoes:
     - name: Adidas Stan Smith
       description: |
@@ -68,6 +68,20 @@
       description: |
         La technologie Nike Flyknit s'inspire des indications des coureurs désireux de posséder une chaussure aussi confortable qu'une chaussette et procurant la sensation decourir pieds nus. Après 4 ans de recherche les ingénieurs et designers ont réfléchi à la création de la technologie nécessaire, résultat : une empeigne quasiment sans couture, ajustée et ultra-légère.
       url: http://dreamsneakers.fr/wp-content/uploads/2013/07/Nike-Flyknit-Racer-Multicolor-6.jpg
+    - name: Nike Air Max tavas
+      description: |
+        La chaussure Nike Air Max Tavas rappelle la coupe rétro de l'emblématique modèle de running original avec une unité Max Air au talon et une semelle extérieure à motif gaufré pour une adhérence sur différentes surfaces.
+      url: http://kradodesign.com/wp-content/uploads/2014/12/nike-air-max-thea-all-white-02.jpg
+- name: Reebok
+  photo_url: reebok.jpg
+  shoes:
+    - name: Nike Air Max tavas
+      description: |
+        La chaussure Nike Air Max Tavas rappelle la coupe rétro de l'emblématique modèle de running original avec une unité Max Air au talon et une semelle extérieure à motif gaufré pour une adhérence sur différentes surfaces.
+      url: http://kradodesign.com/wp-content/uploads/2014/12/nike-air-max-thea-all-white-02.jpg
+- name: Jordan
+  photo_url: jordan.jpg
+  shoes:
     - name: Nike Air Max tavas
       description: |
         La chaussure Nike Air Max Tavas rappelle la coupe rétro de l'emblématique modèle de running original avec une unité Max Air au talon et une semelle extérieure à motif gaufré pour une adhérence sur différentes surfaces.
