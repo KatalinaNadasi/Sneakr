@@ -1,5 +1,6 @@
 class ShoesController < ApplicationController
   def index
+    @brands = Brand.all
     @brand = Brand.find(params[:brand_id])
     # 1 - get list of shoes with brand_id OK
     # 2 - give the list of shoes to the view
