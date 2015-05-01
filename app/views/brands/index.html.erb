@@ -24,30 +24,14 @@
 
 <div id="brands">
   <div class="row">
-    <div class="col-xs-3">
-      <div class="brand-card">
-        <%= image_tag "adidas.png", class: "img-rounded img-responsive" %>
-        <a href='#'></a>
-      </div>
-    </div>
-    <div class="col-xs-3">
-      <div class="brand-card">
-          <%= image_tag "nike.jpg", class: "img-rounded img-responsive" %>
-          <a href='#'></a>
-       </div>
-    </div>
+    <% @brands.each do |brand| %>
       <div class="col-xs-3">
         <div class="brand-card">
-        <%= image_tag "jordan.jpg", class: "img-rounded img-responsive" %>
-        <a href='#'></a>
+          <%= image_tag brand.photo_url, class: "img-rounded img-responsive" %>
+          <%= link_to "", brand_shoes_path(brand) %>
         </div>
       </div>
-    <div class="col-xs-3">
-      <div class="brand-card">
-      <%= image_tag "reebok.jpg", class: "img-rounded img-responsive" %>
-      <a href='#'></a>
-      </div>
-    </div>
+    <% end %>
   </div>
 </div>
 </div>
