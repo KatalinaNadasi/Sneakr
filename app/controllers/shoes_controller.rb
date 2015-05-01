@@ -3,7 +3,7 @@ class ShoesController < ApplicationController
     @brands = Brand.all
     @brand = Brand.find(params[:brand_id])
     # 1 - get list of shoes with brand_id OK
-    # 2 - give the list of shoes to the view with @ OK
+    # 2 - give the list of shoes to the view
     # 3 - show list of models shoes on view
     size = @brand.shoes.size / 3
     size = size.round(0)
