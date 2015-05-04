@@ -19,7 +19,7 @@ gem "uglifier"
 gem "bootstrap-sass"
 gem "font-awesome-sass"
 gem 'activeadmin', github: 'activeadmin'
-
+gem "nokogiri"
 
 gem "rails-i18n"
 gem "devise-i18n"

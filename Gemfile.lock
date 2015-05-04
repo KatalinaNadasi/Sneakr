@@ -281,6 +281,7 @@ DEPENDENCIES
   high_voltage
   jquery-rails
   letter_opener
+  nokogiri
   paperclip
   pg
   pry-byebug

@@ -21,7 +21,7 @@
           <div class='p20'>
             <div class="pin">
               <%= image_tag shoe.picture(:original), class: "img-responsive" %>
-              <h2><%= shoe.name %></h2>
+              <h2><%= link_to shoe.name, shoe_results_path(shoe) %></h2>
               <p>
                 <%= shoe.description %>
               </p>
