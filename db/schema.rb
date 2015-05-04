@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150429163110) do
+ActiveRecord::Schema.define(version: 20150504090316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,20 @@ ActiveRecord::Schema.define(version: 20150429163110) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "results", force: :cascade do |t|
+    t.integer  "price"
+    t.string   "picture_url"
+    t.string   "title"
+    t.string   "size"
+    t.integer  "shoe_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "url"
+    t.integer  "store_id"
+  end
+
+  add_index "results", ["shoe_id"], name: "index_results_on_shoe_id", using: :btree
+
   create_table "shoes", force: :cascade do |t|
     t.string   "name"
     t.integer  "brand_id"
@@ -51,6 +65,13 @@ ActiveRecord::Schema.define(version: 20150429163110) do
   end
 
   add_index "shoes", ["brand_id"], name: "index_shoes_on_brand_id", using: :btree
+
+  create_table "stores", force: :cascade do |t|
+    t.string   "name"
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -71,4 +92,5 @@ ActiveRecord::Schema.define(version: 20150429163110) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "results", "shoes"
 end
