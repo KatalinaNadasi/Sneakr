@@ -149,12 +149,13 @@
   -webkit-column-break-inside: avoid;
   -moz-column-break-inside: avoid;
   column-break-inside: avoid;
-  padding: 25px;
   opacity: 1;
   -webkit-transition: all .2s ease;
   -moz-transition: all .2s ease;
   -o-transition: all .2s ease;
   transition: all .2s ease;
+
+
   &:hover {
     background-color: #FD2F51;
     color: white;
@@ -165,8 +166,8 @@
   }
   img {
     width: 100%;
-    padding-bottom: 15px;
-    margin-bottom: 5px;
+    padding-bottom: 0;
+    margin-bottom: 0;
   }
   p {
     font-size: 15px;
