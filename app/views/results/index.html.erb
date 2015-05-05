@@ -27,9 +27,9 @@
               <div class="result-infos">
                 <ul class="list-unstyled">
                   <li class="price"><%= result.price %>€</li>
-                  <li><%= result.size %></li>
+                  <li>Pointure : <%= result.size.presence || 'n/a' %></li>
                   <li class="store"><%= result.store.name %></li>
-                  <li><%= link_to "Buy", result.url , class: "btn btn-warning"%></li>
+                  <li><%= link_to "Acheter", result.url , class: "btn btn-warning"%></li>
                 </ul>
               </div>
             </div>

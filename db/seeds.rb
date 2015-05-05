@@ -4,20 +4,19 @@ require 'yaml'
 
 # Brand.destroy_all
 
-data = YAML.load_file(File.join(Rails.root, "db", "seed.yml"))
+# data = YAML.load_file(File.join(Rails.root, "db", "seed.yml"))
 
-data.each do |brand_data|
-  brand = Brand.create(name: brand_data["name"], photo_url: brand_data["photo_url"])
-  brand_data["shoes"].each do |shoe_data|
-    Shoe.create(name: shoe_data["name"], description: shoe_data["description"], brand: brand, picture: open(shoe_data["url"]))
-  end
-end
+# data.each do |brand_data|
+#   brand = Brand.create(name: brand_data["name"], photo_url: brand_data["photo_url"])
+#   brand_data["shoes"].each do |shoe_data|
+#     Shoe.create(name: shoe_data["name"], description: shoe_data["description"], brand: brand, picture: open(shoe_data["url"]))
+#   end
+# end
 
 ebay      = Store.where(name: "ebay", url: "http://www.ebay.fr/").first_or_create!
 leboncoin = Store.where(name: "leboncoin", url: "http://www.leboncoin.fr/").first_or_create!
-Klekt     = Store.where(name: "klekt", url: "http://www.klekt.in/").first_or_create!
 
-Shoe.all.each do |shoe|
+# Shoe.all.each do |shoe|
 #   # Ebay - Achat Immediat - Page 1 - 48 baskets
 #   params = { _nkw: shoe.name }.to_query
 #   url = "http://www.ebay.fr/sch/Baskets-/15709/i.html?LH_BIN=1&#{params}"
@@ -31,7 +30,7 @@ Shoe.all.each do |shoe|
 #     result.price = element.search('.amt').text.gsub('EUR', '').gsub(',', '.').strip.to_f
 #     result.picture_url = element.search('.imgWr2 img.img').attribute('src').text
 #     result.title = element.search('.gvtitle a').text
-#     result.size = ""
+#     result.size = nil
 #     result.shoe = shoe
 #     result.url = element.search('.gvtitle a').attribute("href").text
 #     result.store = ebay
@@ -53,36 +52,72 @@ Shoe.all.each do |shoe|
 #     result.price = element.search('.price').text.gsub("€", "").strip
 #     result.picture_url = element.search('.image img').attribute('src').text
 #     result.title = element.search('.title').text.strip
-#     result.size = ""
+#     result.size = nil
 #     result.shoe = shoe
 #     result.url = element.attribute("href").text
 #     result.store = leboncoin
 
 #     result.save!
 #   end
+# end
 
-    # Klekt- Page 1 - 24 Chaussures
-  params = { q: shoe.name }.to_query
-  url = "http://www.klekt.in/#{params}"
+# leboncoin.results.where(size: nil).each do |result|
+#   begin
+#     html_file = open(result.url)
+#     html_doc = Nokogiri::HTML(html_file)
 
-  html_file = open(url)
+#     size = html_doc.search(".criterias tr").text.gsub("\n", "").strip.match(/Pointure :\s*(\d+)/)
+
+#     if size
+#       result.size = size[1]
+#       result.save
+#     else
+#       puts "Announce does not have size: #{result.url}... destroyed"
+#       result.destroy
+#     end
+#   rescue OpenURI::HTTPError => e
+#     if e.message == "404 Not Found"
+#       puts "Announce does not exist anymore: #{result.url}... destroyed"
+#       result.destroy
+#     end
+#   end
+# end
+
+ebay.results.where(size: nil).each do |result|
+  html_file = open(result.url)
   html_doc = Nokogiri::HTML(html_file)
 
-  html_doc.search('.li.search_result_item').each do |element|
-    result = Result.new
-    next if element.search('.image').empty?
+  unavailable = html_doc.search(".msgTextAlign").text.include?("plus disponible")
 
-    result.price = element.search('.price').text.gsub("€", "").strip
-    result.picture_url = element.search('.img').attribute('src').text
-    result.title = element.search('.title data-original-title').text.strip
-    result.size = "size"
-    result.shoe = shoe
-    result.url = element.attribute("href").text
-    result.store = klekt
+  if unavailable
+    puts "Announce does not exist anymore: #{result.url}... destroyed"
+    result.destroy
+    next
+  end
 
-    result.save!
+  uk_size = html_doc.search(".itemAttr td").text.gsub("\t", "").gsub("\n", "").match(/Shoe Size: (UK \d+\.*\d*)/)
+  fr_size = html_doc.search(".itemAttr td").text.gsub("\t", "").gsub("\n", "").match(/Pointure: (\d+,*\d*)/)
+
+  if uk_size
+    result.size = uk_size[1]
+    result.save
+  elsif fr_size
+    result.size = fr_size[1]
+    result.save
+  else
+    puts "Announce with many or no size: #{result.url}..."
   end
 end
+
+# html_doc.search("select[name='Taille'] option").map { |elm| elm.text }
+# => ["- SÃ©lectionner -", "44", "UK 10"]
+# html_doc.search("select[name='Size'] option").map { |elm| elm.text }
+# => ["- SÃ©lectionner -", "UK Sz 4    = (US 4.5, EUR 36 2...", ...]
+
+
+
+
+
 
 # brand = Brand.create(name: "Adidas")
 
