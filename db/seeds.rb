@@ -2,7 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'yaml'
 
-Brand.destroy_all
+# Brand.destroy_all
 
 data = YAML.load_file(File.join(Rails.root, "db", "seed.yml"))
 
@@ -15,47 +15,70 @@ end
 
 ebay      = Store.where(name: "ebay", url: "http://www.ebay.fr/").first_or_create!
 leboncoin = Store.where(name: "leboncoin", url: "http://www.leboncoin.fr/").first_or_create!
+Klekt     = Store.where(name: "klekt", url: "http://www.klekt.in/").first_or_create!
 
 Shoe.all.each do |shoe|
-  # Ebay - Achat Immediat - Page 1 - 48 baskets
-  params = { _nkw: shoe.name }.to_query
-  url = "http://www.ebay.fr/sch/Baskets-/15709/i.html?LH_BIN=1&#{params}"
+#   # Ebay - Achat Immediat - Page 1 - 48 baskets
+#   params = { _nkw: shoe.name }.to_query
+#   url = "http://www.ebay.fr/sch/Baskets-/15709/i.html?LH_BIN=1&#{params}"
 
-  html_file = open(url)
-  html_doc = Nokogiri::HTML(html_file)
+#   html_file = open(url)
+#   html_doc = Nokogiri::HTML(html_file)
 
-  html_doc.search('.sresult').each do |element|
-    result = Result.new
+#   html_doc.search('.sresult').each do |element|
+#     result = Result.new
 
-    result.price = element.search('.amt').text.gsub('EUR', '').gsub(',', '.').strip.to_f
-    result.picture_url = element.search('.imgWr2 img.img').attribute('src').text
-    result.title = element.search('.gvtitle a').text
-    result.size = ""
-    result.shoe = shoe
-    result.url = element.search('.gvtitle a').attribute("href").text
-    result.store = ebay
+#     result.price = element.search('.amt').text.gsub('EUR', '').gsub(',', '.').strip.to_f
+#     result.picture_url = element.search('.imgWr2 img.img').attribute('src').text
+#     result.title = element.search('.gvtitle a').text
+#     result.size = ""
+#     result.shoe = shoe
+#     result.url = element.search('.gvtitle a').attribute("href").text
+#     result.store = ebay
 
-    result.save!
-  end
+#     result.save!
+#   end
 
-  # Le bon coin - Page 1 - 35 Chaussures
+#   # Le bon coin - Page 1 - 35 Chaussures
+#   params = { q: shoe.name }.to_query
+#   url = "http://www.leboncoin.fr/chaussures/offres/nord_pas_de_calais/occasions/?f=a&th=1&#{params}"
+
+#   html_file = open(url)
+#   html_doc = Nokogiri::HTML(html_file)
+
+#   html_doc.search('.list-lbc a').each do |element|
+#     result = Result.new
+#     next if element.search('.image img').empty?
+
+#     result.price = element.search('.price').text.gsub("€", "").strip
+#     result.picture_url = element.search('.image img').attribute('src').text
+#     result.title = element.search('.title').text.strip
+#     result.size = ""
+#     result.shoe = shoe
+#     result.url = element.attribute("href").text
+#     result.store = leboncoin
+
+#     result.save!
+#   end
+
+    # Klekt- Page 1 - 24 Chaussures
   params = { q: shoe.name }.to_query
-  url = "http://www.leboncoin.fr/chaussures/offres/nord_pas_de_calais/occasions/?f=a&th=1&#{params}"
+  url = "http://www.klekt.in/#{params}"
 
   html_file = open(url)
   html_doc = Nokogiri::HTML(html_file)
 
-  html_doc.search('.list-lbc a').each do |element|
+  html_doc.search('.li.search_result_item').each do |element|
     result = Result.new
-    next if element.search('.image img').empty?
+    next if element.search('.image').empty?
 
     result.price = element.search('.price').text.gsub("€", "").strip
-    result.picture_url = element.search('.image img').attribute('src').text
-    result.title = element.search('.title').text.strip
-    result.size = ""
+    result.picture_url = element.search('.img').attribute('src').text
+    result.title = element.search('.title data-original-title').text.strip
+    result.size = "size"
     result.shoe = shoe
     result.url = element.attribute("href").text
-    result.store = leboncoin
+    result.store = klekt
 
     result.save!
   end
