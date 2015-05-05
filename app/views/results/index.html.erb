@@ -1,0 +1,17 @@
+<div class="row">
+  <h1>Shoe <%= @shoe.name %></h1>
+</div>
+<div class="row">
+  <% @results.each do |result| %>
+    <div class="col-xs-3">
+      <h2><%= result.title %></h2>
+      <%= image_tag result.picture_url %>
+      <ul>
+        <li>Price : <%= result.price %></li>
+        <li>Size : <%= result.size %></li>
+        <li>Store : <%= result.store.name %></li>
+      </ul>
+      <%= link_to "Buy", result.url %>
+    </div>
+   <% end %>
+</div>
