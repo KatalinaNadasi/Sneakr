@@ -1,13 +1,11 @@
 class ShoesController < ApplicationController
   def index
-    @brands = Brand.all
     @brand = Brand.find(params[:brand_id])
     # 1 - get list of shoes with brand_id OK
     # 2 - give the list of shoes to the view
     # 3 - show list of models shoes on view
     size = @brand.shoes.size / 3
-    size = size.round(0)
-    @shoes = [@brand.shoes[0...size], @brand.shoes[size...size*2], @brand.shoes[size*2...-1]]
+    @shoes = [@brand.shoes[0...size], @brand.shoes[size...size*2], @brand.shoes[size*2..-1]]
   end
 
   def results
