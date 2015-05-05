@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     resources :shoes, only: [:index]
   end
 
+  resources :shoes, only: [] do
+    resources :results, only: [:index]
+  end
+
   root to: 'brands#index'
 
 end

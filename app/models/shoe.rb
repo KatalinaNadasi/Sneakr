@@ -1,5 +1,6 @@
 class Shoe < ActiveRecord::Base
   belongs_to :brand
+  has_many :results
 
   validates :name, presence: true, uniqueness: true
   validates :brand_id, presence: true
