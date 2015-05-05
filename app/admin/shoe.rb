@@ -13,13 +13,28 @@ ActiveAdmin.register Shoe do
   #   permitted
   # end
 
+  index do
+    id_column
+
+    column :picture do |shoe|
+      image_tag shoe.picture(:thumb)
+    end
+
+    column :name
+    column :created_at
+    column :updated_at
+
+    actions
+  end
+
   form :html => { :enctype => "multipart/form-data" } do |f|
-     f.inputs "Details" do
+    f.inputs "Details" do
       f.input :brand
       f.input :name
       f.input :description
-      f.input :picture, :as => :file
+      f.input :picture, as: :file
     end
+
     f.actions
   end
 

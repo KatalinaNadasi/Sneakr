@@ -1,5 +1,4 @@
-ActiveAdmin.register Brand do
-
+ActiveAdmin.register Result do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
@@ -16,11 +15,22 @@ ActiveAdmin.register Brand do
   index do
     id_column
 
-    column :photo do |brand|
-      image_tag brand.photo_url
+    column :picture do |result|
+      image_tag result.picture_url
     end
 
-    column :name
+    column :brand do |result|
+      result.shoe.brand.name
+    end
+
+    column :title
+    column :size
+    column :price
+
+    column :store do |result|
+      link_to result.store.name, result.url
+    end
+
     column :created_at
     column :updated_at
 
