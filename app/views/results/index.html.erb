@@ -1,17 +1,43 @@
-<div class="row">
-  <h1>Shoe <%= @shoe.name %></h1>
-</div>
-<div class="row">
-  <% @results.each do |result| %>
-    <div class="col-xs-3">
-      <h2><%= result.title %></h2>
-      <%= image_tag result.picture_url %>
-      <ul>
-        <li>Price : <%= result.price %></li>
-        <li>Size : <%= result.size %></li>
-        <li>Store : <%= result.store.name %></li>
-      </ul>
-      <%= link_to "Buy", result.url %>
+<div class="container" id="results">
+  <div class="row">
+
+
+    <div class="col-xs-12 col-sm-4">
+      <!-- search form -->
+      <h1>Shoe <%= @shoe.name %></h1>
     </div>
-   <% end %>
+
+
+    <div class="col-xs-12 col-sm-8">
+
+      <!-- results list -->
+      <% @results.each do |result| %>
+        <div class="result">
+          <div class="row">
+            <div class="col-xs-2">
+              <div class="result-img" style="background-image:url(<%= result.picture_url%>)">
+              </div>
+            </div>
+            <div class="col-xs-8">
+              <div class="result-body">
+                <h2><%= result.title %></h2>
+              </div>
+            </div>
+            <div class="col-xs-2">
+              <div class="result-infos">
+                <ul class="list-unstyled">
+                  <li class="price"><%= result.price %>€</li>
+                  <li><%= result.size %></li>
+                  <li class="store"><%= result.store.name %></li>
+                  <li><%= link_to "Buy", result.url , class: "btn btn-warning"%></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+       <% end %>
+
+    </div>
+
+  </div>
 </div>

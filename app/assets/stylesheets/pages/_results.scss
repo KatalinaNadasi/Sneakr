@@ -1,0 +1,37 @@
+#results {
+  h1 {
+    font-size: 18px;
+    text-align: left;
+  }
+  .result {
+    background: white;
+    box-shadow: 1px 1px 3px rgb(221, 221, 221);
+    margin-bottom: 15px;
+    &-img {
+      height: 120px;
+      background-size: cover;
+    }
+    &-body {
+      padding-left: 10px;
+      h2 {
+        font-size: 20px;
+      }
+    }
+    &-infos {
+      border-left: 1px dashed rgb(221, 220, 220);
+      padding-left: 16px;
+      .price {
+        font-size: 32px;
+        font-weight: bold;
+      }
+      .store {
+        margin-bottom: 9px;
+        margin-top: 5px;
+        font-size: 15px;
+      }
+      ul {
+        margin-bottom: 0px;
+      }
+    }
+  }
+}
