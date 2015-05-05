@@ -54,9 +54,8 @@ ActiveRecord::Schema.define(version: 20150504090316) do
 
   create_table "shoes", force: :cascade do |t|
     t.string   "name"
-    t.string   "brand_id"
+    t.integer  "brand_id"
     t.text     "description"
-    t.string   "photo_url"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
     t.string   "picture_file_name"
@@ -64,6 +63,8 @@ ActiveRecord::Schema.define(version: 20150504090316) do
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
   end
+
+  add_index "shoes", ["brand_id"], name: "index_shoes_on_brand_id", using: :btree
 
   create_table "stores", force: :cascade do |t|
     t.string   "name"
