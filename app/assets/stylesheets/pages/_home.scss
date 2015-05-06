@@ -78,7 +78,8 @@
 }
 
 #main-logo {
-  position: absolute;
+  position: relative;
+  text-align: center;
 }
 
 #main-logo.shoes-front > img {
@@ -88,6 +89,11 @@
 #home-title {
   color: grey;
 
+}
+
+#logo-brand {
+  position: absolute;
+  height: 20px
 }
 
 .subtitle {

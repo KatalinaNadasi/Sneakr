@@ -1,6 +1,6 @@
 <div class="container">
-  <div id="main-logo" class="shoes-front">
-    <%= image_tag "logook.png", class: "img-center"  %>
+  <div id="logo-brand" class="shoes-front">
+    <%= image_tag "logook.png" %>
   </div>
 </div>
 
@@ -17,11 +17,13 @@
   <div id="wrapper">
     <% @shoes.each do |shoes_column|%>
       <div class="col-xs-4">
-        <% shoes_column.each do |shoe| %>
+        <% shoes_column.each_with_index do |shoe, index| %>
           <%= link_to shoe_results_path(shoe) do %>
             <div class='p20'>
               <div class="pin">
-                <i class="fa fa-sort-asc fa-3x"></i>
+                <% if index == 2  %>
+                  <i class="fa fa-sort-asc fa-3x"></i>
+                <% end %>
                   <%= image_tag shoe.picture(:original), class: "img-responsive" %>
                     <div class="pin-title">
                       <h2><%= shoe.name %></h2>
@@ -39,3 +41,16 @@
       <% end %>
     </div>
   </div>
+
+<div id="brands">
+  <div class="row">
+    <% @others_brands.each do |other_brand| %>
+      <div class="col-xs-4">
+        <div class="brand-card">
+          <%= image_tag other_brand.photo_url, class: "img-rounded img-responsive" %>
+          <%= link_to "", brand_shoes_path(other_brand) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
