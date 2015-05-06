@@ -48,10 +48,6 @@
       description: |
         Idéale pour les coureurs qui découvrent la technologie Nike Free, la chaussure de running Nike Free 5.0 offre un excellent amorti en toute légèreté et un maintien optimal tout en procurant une expérience de running naturelle."
       url: http://1.bp.blogspot.com/-fzNwsyNY5ZI/U4-sldbfjpI/AAAAAAAAN8E/T0aRQgn46UY/s1600/nike-free-5.0-noir.jpg
-    - name: Nike Dunk
-      description: |
-        Soyez fidèle : aux couleurs de votre école, à votre école de pensée. C'est la devise de la Nike Dunk depuis son lancement en 1985. Cette année-là, sept équipes universitaires de basket-ball ont décidé de casser les codes du sport en choisissant d'assortir leurs chaussures Nike Dunk à leur tenue. Cette nouvelle tendance a fait naître une explosion de couleurs et la Nike Dunk est depuis devenue un symbole de l'expression individuelle. Basketteurs, skateurs et collectionneurs se sont emparés de ce modèle de chaussure et continuent à influencer son évolution.
-      url: http://www.sneakers-actus.fr/wp-content/uploads/2013/08/nike-dunk-high-premium-sp-cocoa-snake-9.jpg
     - name: Nike Air Mariah PR
       description: |
         C’est le premier modèle de running ultra-léger doté d’un upper sans coutures, empruntant les caractéristiques de la Nike Eagle. La semelle inclut une unité Air-Sole au talon qui protège parfaitement des impacts et offre un amorti optimal.
@@ -75,14 +71,7 @@
 - name: Reebok
   photo_url: reebok.jpg
   shoes:
-    - name: Nike Air Max tavas
-      description: |
-        La chaussure Nike Air Max Tavas rappelle la coupe rétro de l'emblématique modèle de running original avec une unité Max Air au talon et une semelle extérieure à motif gaufré pour une adhérence sur différentes surfaces.
-      url: http://kradodesign.com/wp-content/uploads/2014/12/nike-air-max-thea-all-white-02.jpg
+
 - name: Jordan
   photo_url: jordan.jpg
   shoes:
-    - name: Nike Air Max tavas
-      description: |
-        La chaussure Nike Air Max Tavas rappelle la coupe rétro de l'emblématique modèle de running original avec une unité Max Air au talon et une semelle extérieure à motif gaufré pour une adhérence sur différentes surfaces.
-      url: http://kradodesign.com/wp-content/uploads/2014/12/nike-air-max-thea-all-white-02.jpg

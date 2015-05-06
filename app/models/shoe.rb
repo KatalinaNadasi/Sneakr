@@ -1,6 +1,6 @@
 class Shoe < ActiveRecord::Base
   belongs_to :brand
-  has_many :results
+  has_many :results, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
   validates :brand_id, presence: true
