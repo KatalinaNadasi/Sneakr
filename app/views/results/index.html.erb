@@ -1,31 +1,51 @@
+<div class="container">
+  <div id="logo-brand" class="shoes-front">
+    <%= image_tag "logook.png" %>
+  </div>
+</div>
+
 <div class="container" id="results">
   <div class="row">
-
-<div class="col-xs-12 col-sm-4">
-<%= form_tag("", method: "get", class: "form-horizontal") do %>
-    <div class="form-group">
-        <label class="col-sm-2 control-label">Brand</label>
-        <div class="col-sm-10">
-          <p class="form-control-static"><%= @shoe.brand.name %></p>
+<div class="col-xs-12 col-sm-4"
+  <%= form_tag("", method: "get", class: "form-horizontal") do %>
+      <div class="form-group">
+          <label class="col-sm-2 control-label">Brand</label>
+          <div class="col-sm-10">
+            <p class="form-control-static"><%= @shoe.brand.name %></p>
+          </div>
+      </div>
+      <div class="form-group">
+          <label class="col-sm-2 control-label">Shoe</label>
+          <div class="col-sm-10">
+            <p class="form-control-static"><%= @shoe.name %></p>
+          </div>
+      </div>
+      <div class="size">
+        <%= label_tag(:size, "Pointure") %>
+        <%= select_tag :size, options_for_select(35..46, 42), class: "select-style" %>
+      </div>
+      </section>
+      <div class="price">
+        <%#= label_tag(:amount, "Price") %>
+        <!-- € <%= number_field_tag(:amount, 20, in: 20.0..120.0, step: 1) %>
+        <p> -->
+          <label for="amount">Prix:</label>
+         </p>
+        <div id="slider-range"></div>
+        <div id="minValue">
+          0
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-2 control-label">Shoe</label>
-        <div class="col-sm-10">
-          <p class="form-control-static"><%= @shoe.name %></p>
+        <div id="maxValue">
+          300
         </div>
 
-    </div>
+      </div>
 
-    <%= label_tag(:size, "Pointure") %>
-    <%= select_tag(:size, options_for_select(35..46)) %>
+      <%= submit_tag("Search") %>
+  <% end %>
+  </div>
 
-    <%= label_tag(:amount, "Price") %>
-    <%= number_field_tag(:amount, nil, in: 20.0..120.0, step: 1) %>
 
-    <%= submit_tag("Search") %>
-<% end %>
-</div>
 
 
     <div class="col-xs-12 col-sm-8">
@@ -61,3 +81,31 @@
 
   </div>
 </div>
+
+
+<%= content_for(:after_js) do %>
+  <script>
+    $( "#slider-range" ).on('slide', function() {
+      updateValues()
+    })
+
+    $( "#slider-range" ).slider({
+        range: true,
+        min: 0,
+        max: 500,
+        values: [ 75, 300 ],
+        slide: function( event, ui ) {
+          $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+        }
+    });
+
+    function updateValues() {
+      var val = $('#slider-range').slider('values')
+      $('#minValue').html(val[0])
+      $('#maxValue').html(val[1])
+
+    }
+
+
+  </script>
+<% end %>
