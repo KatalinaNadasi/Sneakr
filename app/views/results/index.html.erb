@@ -15,7 +15,7 @@
         <div class="result">
           <div class="row">
             <div class="col-xs-2">
-              <div class="result-img" style="background-image:url(<%= asset_path result.picture_url%>)">
+              <div class="result-img" style="background-image:url(<%= asset_path result.picture_url %>)">
               </div>
             </div>
             <div class="col-xs-8">
@@ -29,7 +29,7 @@
                   <li class="price"><%= result.price %>€</li>
                   <li>Pointure : <%= result.size.presence || 'n/a' %></li>
                   <li class="store"><%= result.store.name %></li>
-                  <li><%= link_to "Acheter", result.url , class: "btn btn-warning"%></li>
+                  <li><%= link_to "Acheter", result.url , class: "btn btn-warning", :target => "_blank" %></li>
                 </ul>
               </div>
             </div>
