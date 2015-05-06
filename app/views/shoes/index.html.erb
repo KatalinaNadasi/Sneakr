@@ -21,18 +21,22 @@
           <%= link_to shoe_results_path(shoe) do %>
             <div class='p20'>
               <div class="pin">
-                <%= image_tag shoe.picture(:original), class: "img-responsive" %>
-                <h2><%= shoe.name %></h2>
-                <p>
-                  <%= shoe.description %>
-                </p>
+                <i class="fa fa-sort-asc fa-3x"></i>
+                  <%= image_tag shoe.picture(:original), class: "img-responsive" %>
+                    <div class="pin-title">
+                      <h2><%= shoe.name %></h2>
+                    </div>
+                    <div class="pin-content">
+                    <p>
+                      <%= shoe.description %>
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
         <% end %>
       </div>
     <% end %>
   </div>
 </div>
-
-

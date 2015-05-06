@@ -99,10 +99,10 @@ ebay.results.where(size: nil).each do |result|
   fr_size = html_doc.search(".itemAttr td").text.gsub("\t", "").gsub("\n", "").match(/Pointure: (\d+,*\d*)/)
 
   if uk_size
-    result.size = uk_size[1]
+    result.size = uk_size[1].float
     result.save
   elsif fr_size
-    result.size = fr_size[1]
+    result.size = fr_size[1].float
     result.save
   else
     puts "Announce with many or no size: #{result.url}..."
