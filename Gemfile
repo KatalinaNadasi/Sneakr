@@ -20,6 +20,7 @@ gem "bootstrap-sass"
 gem "font-awesome-sass"
 gem 'activeadmin', github: 'activeadmin'
 gem "nokogiri"
+gem "bootstrap_form"
 
 gem "rails-i18n"
 gem "devise-i18n"
