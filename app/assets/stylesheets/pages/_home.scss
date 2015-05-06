@@ -88,18 +88,19 @@ h1{
   text-align: center;
 }
 
-#main-logo.shoes-front > img {
-  height: 125px;
+#main-logo.shoes-front {
+  font-size: 22px;
+
 }
 
 #home-title {
   color: grey;
-
+  text-align: center
 }
 
 #logo-brand {
-  position: absolute;
-  height: 20px
+  position: relative;
+  font-size: 30px;
 }
 
 .subtitle {

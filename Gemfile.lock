@@ -282,6 +282,7 @@ DEPENDENCIES
   font-awesome-sass
   high_voltage
   jquery-rails
+  jquery-ui-rails
   letter_opener
   nokogiri
   paperclip

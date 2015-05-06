@@ -6,9 +6,11 @@
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-
+@import "jquery-ui";
+@import "jquery-ui/slider";
 // Your CSS
 @import "layout/index";
 @import "components/index";
 @import "pages/index";
 @import "vendor/index";
+

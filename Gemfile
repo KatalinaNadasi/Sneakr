@@ -12,7 +12,7 @@ gem "devise"
 gem "pundit"
 gem "paperclip"
 gem "aws-sdk", "< 2.0"
-
+gem 'jquery-ui-rails'
 gem "jquery-rails"
 gem "sass-rails", "~> 5.0"
 gem "uglifier"
