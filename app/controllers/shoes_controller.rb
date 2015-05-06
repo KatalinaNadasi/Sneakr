@@ -1,6 +1,7 @@
 class ShoesController < ApplicationController
   def index
     @brand = Brand.find(params[:brand_id])
+    @others_brands = Brand.where.not(id: params[:brand_id])
     # 1 - get list of shoes with brand_id OK
     # 2 - give the list of shoes to the view
     # 3 - show list of models shoes on view
