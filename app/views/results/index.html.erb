@@ -1,7 +1,14 @@
 <div class="container">
   <div id="logo-brand" class="shoes-front">
-    <%= image_tag "logook.png" %>
+<%= link_to (image_tag "logook.png"), root_path %>
   </div>
+</div>
+
+<div class="text-center">
+
+  <%= link_to brand_shoes_path(@shoe.brand) do %>
+    <i class="fa fa-arrow-left"></i> Retour
+  <% end %>
 </div>
 
 <div class="container" id="results">
@@ -25,23 +32,20 @@
         <%= select_tag :size, options_for_select(35..46, 42), class: "select-style" %>
       </div>
       </section>
+      <%= label_tag(:price, "Price") %>
       <div class="price">
-        <%#= label_tag(:amount, "Price") %>
-        <!-- € <%= number_field_tag(:amount, 20, in: 20.0..120.0, step: 1) %>
-        <p> -->
-          <label for="amount">Prix:</label>
-         </p>
         <div id="slider-range"></div>
-        <div id="minValue">
-          0
+          <div id="minValue" class='pull-left'>
+            0
+          </div>
+          <div id="maxValue" class='pull-right'>
+            90
+          </div>
         </div>
-        <div id="maxValue">
-          300
-        </div>
-
+        <div class="clear"></div>
+      <div class="btn-container">
+        <%= submit_tag("Search") %>
       </div>
-
-      <%= submit_tag("Search") %>
   <% end %>
   </div>
 
@@ -92,7 +96,7 @@
     $( "#slider-range" ).slider({
         range: true,
         min: 0,
-        max: 500,
+        max: 1000,
         values: [ 75, 300 ],
         slide: function( event, ui ) {
           $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
