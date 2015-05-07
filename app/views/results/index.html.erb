@@ -1,85 +1,94 @@
-<div class="container">
-  <div id="logo-brand" class="shoes-front">
-<%= link_to (image_tag "logook.png"), root_path %>
+  <div class="container">
+    <div id="logo-brand" class="shoes-front">
+      <%= link_to (image_tag "logook.png"), root_path %>
+    </div>
   </div>
-</div>
 
-<div class="text-center">
+  <div class="text-center">
 
-  <%= link_to brand_shoes_path(@shoe.brand) do %>
+    <%= link_to brand_shoes_path(@shoe.brand) do %>
     <i class="fa fa-arrow-left"></i> Retour
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
-<div class="container" id="results">
-  <div class="row">
-<div class="col-xs-12 col-sm-4"
-  <%= form_tag("", method: "get", class: "form-horizontal") do %>
-      <div class="form-group">
-          <label class="col-sm-2 control-label">Brand</label>
+
+  <div class="container" id="results">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <%= form_tag("", method: "get", class: "form-horizontal") do %>
+        <div class="form-group">
+          <label class="col-sm-2 control-label left">Brand : </label>
           <div class="col-sm-10">
-            <p class="form-control-static"><%= @shoe.brand.name %></p>
+            <p class="form-control-static"><%=@shoe.brand.name %></p>
           </div>
-      </div>
-      <div class="form-group">
-          <label class="col-sm-2 control-label">Shoe</label>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label left">Shoe :</label>
           <div class="col-sm-10">
             <p class="form-control-static"><%= @shoe.name %></p>
           </div>
-      </div>
-      <div class="size">
-        <%= label_tag(:size, "Pointure") %>
-        <%= select_tag :size, options_for_select(35..46, 42), class: "select-style" %>
-      </div>
+        </div>
+        <div class="size">
+          <%= label_tag(:size, "Pointure") %>
+          <%= select_tag :size, options_for_select(35..46, 42), class: "select-style" %>
+        </div>
       </section>
       <%= label_tag(:price, "Price") %>
       <div class="price">
-        <div id="slider-range"></div>
-          <div id="minValue" class='pull-left'>
-            0
-          </div>
-          <div id="maxValue" class='pull-right'>
-            90
-          </div>
+        <div id="slider-range">
+          <input type="hidden" id="amount" name="price">
         </div>
-        <div class="clear"></div>
+        <div id="minValue" class='pull-left'>
+          <% if @price_low_range %>
+            <%= @price_low_range %>
+          <% else %>
+            0
+          <% end %>
+        </div>
+        <div id="maxValue" class='pull-right'>
+          <% if @price_high_range %>
+            <%= @price_high_range %>
+          <% else %>
+            90
+          <% end %>
+        </div>
+      </div>
+
+      <div class="clear"></div>
       <div class="btn-container">
         <%= submit_tag("Search") %>
       </div>
-  <% end %>
-  </div>
-
-
-
+      <% end %>
+    </div>
 
     <div class="col-xs-12 col-sm-8">
 
       <!-- results list -->
       <% @results.each do |result| %>
-        <div class="result">
-          <div class="row">
-            <div class="col-xs-2">
-              <div class="result-img" style="background-image:url(<%= asset_path result.picture_url %>)">
-              </div>
+      <div class="result">
+        <div class="row">
+          <div class="col-xs-2">
+            <div class="result-img" style="background-image:url(<%= asset_path result.picture_url %>)">
             </div>
-            <div class="col-xs-8">
-              <div class="result-body">
-                <h2><%= result.title %></h2>
-              </div>
+          </div>
+          <div class="col-xs-8">
+            <div class="result-body">
+              <h2><%= result.title %></h2>
             </div>
-            <div class="col-xs-2">
-              <div class="result-infos">
-                <ul class="list-unstyled">
-                  <li class="price"><%= result.price %>€</li>
-                  <li>Pointure : <%= result.size.presence || 'n/a' %></li>
-                  <li class="store"><%= result.store.name %></li>
-                  <li><%= link_to "Acheter", result.url , class: "btn btn-warning", :target => "_blank" %></li>
-                </ul>
-              </div>
+          </div>
+          <div class="col-xs-2">
+            <div class="result-infos">
+              <ul class="list-unstyled">
+                <li class="price"><%= result.price %>€</li>
+                <li>Pointure : <%= result.size.presence || 'n/a' %></li>
+                <li class="store"><%= result.store.name %></li>
+                <li><%= link_to "Acheter", result.url , class: "btn btn-warning", :target => "_blank" %></li>
+              </ul>
             </div>
           </div>
         </div>
-       <% end %>
+      </div>
+      <% end %>
 
     </div>
 
@@ -88,28 +97,28 @@
 
 
 <%= content_for(:after_js) do %>
-  <script>
-    $( "#slider-range" ).on('slide', function() {
-      updateValues()
-    })
+<script>
+$( "#slider-range" ).on('slide', function() {
+  updateValues()
+})
 
-    $( "#slider-range" ).slider({
-        range: true,
-        min: 0,
-        max: 1000,
-        values: [ 75, 300 ],
-        slide: function( event, ui ) {
-          $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-        }
-    });
+$( "#slider-range" ).slider({
+  range: true,
+  min: 0,
+  max: 1000,
+  values: [ 75, 300 ],
+  slide: function( event, ui ) {
+    $( "#amount" ).val( ui.values[ 0 ] + "-" + ui.values[ 1 ] );
+  }
+});
 
-    function updateValues() {
-      var val = $('#slider-range').slider('values')
-      $('#minValue').html(val[0])
-      $('#maxValue').html(val[1])
+function updateValues() {
+  var val = $('#slider-range').slider('values')
+  $('#minValue').html(val[0])
+  $('#maxValue').html(val[1])
 
-    }
+}
 
 
-  </script>
+</script>
 <% end %>
