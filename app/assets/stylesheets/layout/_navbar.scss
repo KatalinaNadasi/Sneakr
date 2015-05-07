@@ -39,6 +39,14 @@ $navbar-profile-border-width: 2px;
 /* -------------------------------------
  * SCSS code
  * ------------------------------------- */
+
+#logo-brand {
+  img {
+    display: block;
+    margin: auto;
+  }
+}
+
 .navbar-wagon {
   background: $navbar-bg;
   font-family: $navbar-font-family;
