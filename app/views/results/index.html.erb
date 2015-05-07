@@ -1,21 +1,18 @@
-  <div class="container">
-    <div id="logo-brand" class="shoes-front">
-      <%= link_to (image_tag "logook.png"), root_path %>
-    </div>
-  </div>
 
-  <div class="text-center">
-
+  <div class="row text-center">
     <%= link_to brand_shoes_path(@shoe.brand) do %>
     <i class="fa fa-arrow-left"></i> Retour
     <% end %>
   </div>
 
-
   <div class="container" id="results">
+    <div id="logo-brand" class="shoes-front">
+      <%= link_to (image_tag "logook.png"), root_path %>
+    </div>
     <div class="row">
-      <div class="col-xs-12 col-sm-4">
-        <%= form_tag("", method: "get", class: "form-horizontal") do %>
+      <div class="col-xs-12 col-sm-4" style="margin-top: 200px;">
+
+        <%= form_tag("",method: "get", class: "form-horizontal") do %>
         <div class="form-group">
           <label class="col-sm-2 control-label left">Brand : </label>
           <div class="col-sm-10">
@@ -74,6 +71,9 @@
           <div class="col-xs-8">
             <div class="result-body">
               <h2><%= result.title %></h2>
+              <p>
+                <div class="store"><%= result.store.name %> </div>
+              </p>
             </div>
           </div>
           <div class="col-xs-2">
@@ -81,8 +81,8 @@
               <ul class="list-unstyled">
                 <li class="price"><%= result.price %>€</li>
                 <li>Pointure : <%= result.size.presence || 'n/a' %></li>
-                <li class="store"><%= result.store.name %></li>
-                <li><%= link_to "Acheter", result.url , class: "btn btn-warning", :target => "_blank" %></li>
+                <!-- <li class="store"><%= result.store.name %></li> -->
+                <li class="Achat"><%= link_to "Acheter", result.url , class: "btn btn-warning", :target => "_blank" %></li>
               </ul>
             </div>
           </div>
