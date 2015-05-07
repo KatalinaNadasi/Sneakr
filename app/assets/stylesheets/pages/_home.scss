@@ -167,6 +167,7 @@ height: 125px;
 .pin {
   display: inline-block;
   background: white;
+  position: relative;
   box-shadow: 0 1px 2px rgba(202, 200, 200, 1);
   margin: 0 2px 15px;
   -webkit-column-break-inside: avoid;
@@ -177,6 +178,15 @@ height: 125px;
   -moz-transition: all .2s ease;
   -o-transition: all .2s ease;
   transition: all .2s ease;
+
+  i {
+    position: absolute;
+    margin: 20px;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.41);
+    top: 0;
+    color: white;
+
+  }
 
   &-title {
     padding: 15px;
