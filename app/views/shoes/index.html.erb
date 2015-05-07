@@ -9,7 +9,7 @@
 <div class="text-center">
   <h3><%= @brand.name %></h3>
   <%= link_to brands_path do %>
-    <i class="fa fa-arrow-left"></i> Retour
+  <i class="fa fa-arrow-left"></i> Retour
   <% end %>
 </div>
 
@@ -17,44 +17,44 @@
 <div class="container">
   <div id="wrapper">
     <% @shoes.each do |shoes_column|%>
-      <div class="col-xs-4">
-        <% shoes_column.each_with_index do |shoe, index| %>
-          <%= link_to shoe_results_path(shoe) do %>
-            <div class='p20'>
-              <div class="pin">
-                <% if index == 2  %>
-                  <i class="fa fa-sort-asc fa-3x"></i>
-                <% end %>
-                  <%= image_tag shoe.picture(:original), class: "img-responsive" %>
-                    <div class="pin-title">
-                      <h2><%= shoe.name %></h2>
-                    </div>
-                    <div class="pin-content">
-                    <p>
-                      <%= shoe.description %>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            <% end %>
+    <div class="col-xs-4">
+      <% shoes_column.each_with_index do |shoe, index| %>
+      <%= link_to shoe_results_path(shoe) do %>
+      <div class='p20'>
+        <div class="pin">
+          <% if index == 2  %>
+          <i class="fa fa-sort-asc fa-3x"></i>
           <% end %>
+          <%= image_tag shoe.picture(:original), class: "img-responsive" %>
+          <div class="pin-title">
+            <h2><%= shoe.name %></h2>
+          </div>
+          <div class="pin-content">
+            <p>
+              <%= shoe.description %>
+            </p>
+          </div>
         </div>
+      </div>
+      <% end %>
       <% end %>
     </div>
+    <% end %>
   </div>
+</div>
 
 <div id="brands">
   <div class="row">
     <% @others_brands.each do |other_brand| %>
-      <div class="col-xs-4">
-        <div class="brand-card">
-          <%= image_tag other_brand.photo_url, class: "img-rounded img-responsive" %>
-          <%= link_to "", brand_shoes_path(other_brand) %>
-        </div>
+    <div class="col-xs-4">
+      <div class="brand-card">
+        <%= image_tag other_brand.photo_url, class: "img-rounded img-responsive" %>
+        <%= link_to "", brand_shoes_path(other_brand) %>
       </div>
-      <% end %>
     </div>
+    <% end %>
   </div>
+</div>
 
 
 
