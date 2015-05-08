@@ -8,8 +8,10 @@ data = YAML.load_file(File.join(Rails.root, "db", "seed.yml"))
 
 data.each do |brand_data|
   brand = Brand.create(name: brand_data["name"], photo_url: brand_data["photo_url"])
-  brand_data["shoes"].each do |shoe_data|
-    Shoe.create(name: shoe_data["name"], description: shoe_data["description"], brand: brand, picture: open(shoe_data["url"]))
+  if brand_data
+    brand_data["shoes"].each do |shoe_data|
+      Shoe.create(name: shoe_data["name"], description: shoe_data["description"], brand: brand, picture: open(shoe_data["url"]))
+    end
   end
 end
 
