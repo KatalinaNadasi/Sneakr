@@ -71,7 +71,14 @@
 - name: Reebok
   photo_url: reebok.jpg
   shoes:
-
+    - name: Nike Air Max tavas
+      description: |
+        La chaussure Nike Air Max Tavas rappelle la coupe rétro de l'emblématique modèle de running original avec une unité Max Air au talon et une semelle extérieure à motif gaufré pour une adhérence sur différentes surfaces.
+      url: http://kradodesign.com/wp-content/uploads/2014/12/nike-air-max-thea-all-white-02.jpg
 - name: Jordan
   photo_url: jordan.jpg
   shoes:
+    - name: Nike Air Max tavas
+      description: |
+        La chaussure Nike Air Max Tavas rappelle la coupe rétro de l'emblématique modèle de running original avec une unité Max Air au talon et une semelle extérieure à motif gaufré pour une adhérence sur différentes surfaces.
+      url: http://kradodesign.com/wp-content/uploads/2014/12/nike-air-max-thea-all-white-02.jpg
