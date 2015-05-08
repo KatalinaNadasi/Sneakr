@@ -27,28 +27,30 @@
         </div>
         <div class="size">
           <%= label_tag(:size, "Pointure") %>
-          <%= select_tag :size, options_for_select(35..46, 42), class: "select-style" %>
+          <%= select_tag :size, options_for_select(35..46), prompt: "Select a size", class: "select-style" %>
         </div>
       </section>
+
       <%= label_tag(:price, "Price") %>
       <div class="price">
         <div id="slider-range">
-          <input type="hidden" id="amount" name="price">
+          <input type="hidden" id="amount" name="price" value="" maxlength="6">
         </div>
         <div id="minValue" class='pull-left'>
           <% if @price_low_range %>
             <%= @price_low_range %>
           <% else %>
-            0
+            1
           <% end %>
         </div>
         <div id="maxValue" class='pull-right'>
           <% if @price_high_range %>
             <%= @price_high_range %>
           <% else %>
-            90
+            1000
           <% end %>
         </div>
+
       </div>
 
       <div class="clear"></div>
@@ -98,27 +100,35 @@
 
 <%= content_for(:after_js) do %>
 <script>
-$( "#slider-range" ).on('slide', function() {
-  updateValues()
-})
 
-$( "#slider-range" ).slider({
-  range: true,
-  min: 0,
-  max: 1000,
-  values: [ 75, 300 ],
-  slide: function( event, ui ) {
-    $( "#amount" ).val( ui.values[ 0 ] + "-" + ui.values[ 1 ] );
-  }
-});
+  $(document).ready(function(){
 
-function updateValues() {
-  var val = $('#slider-range').slider('values')
-  $('#minValue').html(val[0])
-  $('#maxValue').html(val[1])
+    <% if @size %>
+      $("#size").val(<%= @size %>);
+    <% end %>
 
-}
+    var min = <%= @price_low_range || 0 %> ;
+    var max = <%= @price_high_range || 1000 %> ;
+    $("#amount" ).val( min + "-" + max );
 
+    $( "#slider-range" ).slider({
+      range: true,
+      min: 0,
+      max: 1000,
+      values: [ min, max ],
+      slide: function( event, ui ) {
+        var minimum = ui.values[0];
+        var maximum = ui.values[1];
+        $("#amount" ).val( minimum + "-" + maximum );
+        updateValues(minimum, maximum);
+      }
+    });
 
+    function updateValues(min, max) {
+      $('#minValue').html(min);
+      $('#maxValue').html(max);
+    }
+
+  })
 </script>
 <% end %>
