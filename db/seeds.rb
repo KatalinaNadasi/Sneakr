@@ -20,7 +20,7 @@ Shoe.all.each do |shoe|
   # Ebay - Achat Immediat - Page 1 - 48 baskets
   params = { _nkw: shoe.name }.to_query
   url = "http://www.ebay.fr/sch/Baskets-/15709/i.html?LH_BIN=1&#{params}"
-
+  p url
   html_file = open(url)
   html_doc = Nokogiri::HTML(html_file)
 
@@ -99,10 +99,10 @@ ebay.results.where(size: nil).each do |result|
   fr_size = html_doc.search(".itemAttr td").text.gsub("\t", "").gsub("\n", "").match(/Pointure: (\d+,*\d*)/)
 
   if uk_size
-    result.size = uk_size[1].float
+    result.size = uk_size[1].to_f
     result.save
   elsif fr_size
-    result.size = fr_size[1].float
+    result.size = fr_size[1].to_f
     result.save
   else
     puts "Announce with many or no size: #{result.url}..."
